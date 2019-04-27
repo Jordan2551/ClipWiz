@@ -28,4 +28,3 @@ class DB:
         self.cursor.execute("SELECT * FROM Clips WHERE content=?",("Hi this test3",))
         all_rows = self.cursor.fetchall()
 
-

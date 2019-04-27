@@ -6,12 +6,40 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>730</width>
-    <height>790</height>
+    <width>754</width>
+    <height>772</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#centralwidget{
+	background-image:url('C:/Users/falador/Google Drive/Wallpapers/dark_polygon01.png');
+}
+
+QPushButton{
+	color: #0288D1;
+	border-style: solid;
+	border-color: #0288D1;
+	border-width: 2px;
+	border-radius: 10px;
+	background-color: white;
+	font-size: 18px;
+}
+
+ QPushButton:hover {
+     background-color: #0288D1;
+	 border-color: white;
+     color: white;
+ }
+
+ QLineEdit{
+	border-radius: 10px;
+	color: #0288D1;
+	padding: 2px;
+	height: 75px;
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTableView" name="dataTable">
@@ -41,6 +69,9 @@
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color:white;</string>
+    </property>
     <property name="text">
      <string>Clip Board History</string>
     </property>
@@ -49,33 +80,43 @@
     <property name="geometry">
      <rect>
       <x>240</x>
-      <y>80</y>
+      <y>70</y>
       <width>221</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Courier New</family>
+      <pointsize>12</pointsize>
      </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="placeholderText">
+     <string>Search for clip..</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>70</y>
+      <y>60</y>
       <width>81</width>
-      <height>41</height>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Calibri</family>
-      <pointsize>13</pointsize>
+      <pointsize>14</pointsize>
       <weight>50</weight>
       <bold>false</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white;</string>
     </property>
     <property name="text">
      <string>Search</string>
@@ -85,16 +126,18 @@
     <property name="geometry">
      <rect>
       <x>470</x>
-      <y>77</y>
+      <y>70</y>
       <width>101</width>
-      <height>28</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Calibri</family>
-      <pointsize>10</pointsize>
+      <pointsize>-1</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Reset</string>
@@ -104,16 +147,18 @@
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>607</y>
+      <y>610</y>
       <width>101</width>
-      <height>28</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Calibri</family>
-      <pointsize>10</pointsize>
+      <pointsize>-1</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Change</string>
@@ -125,13 +170,20 @@
       <x>170</x>
       <y>610</y>
       <width>221</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Courier New</family>
+      <pointsize>12</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -143,13 +195,107 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
     <property name="font">
      <font>
       <family>Calibri</family>
-      <pointsize>13</pointsize>
+      <pointsize>14</pointsize>
       <weight>50</weight>
       <bold>false</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white;</string>
     </property>
     <property name="text">
      <string>Clip Cycle Keybind</string>
@@ -167,10 +313,13 @@
     <property name="font">
      <font>
       <family>Calibri</family>
-      <pointsize>14</pointsize>
+      <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white;</string>
     </property>
     <property name="text">
      <string>Options</string>
@@ -239,6 +388,9 @@
       <bold>false</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color:white;</string>
+    </property>
     <property name="text">
      <string>• Pro tip: click table row to copy contents to clipboard </string>
     </property>
@@ -249,7 +401,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>730</width>
+     <width>754</width>
      <height>26</height>
     </rect>
    </property>
