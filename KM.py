@@ -1,4 +1,5 @@
 from pynput import keyboard
+import DB
 
 #Covers ctrl + c for windows and cmd + c for mac
 COPY =[
@@ -19,6 +20,8 @@ def press(key):
         #If the keystack contains a possible combo from COPY then the combo was found!
         if any(all(k in key_buffer for k in combo) for combo in COPY):
             print('Ctrl+alt+c')
+    if key == keyboard.Key.esc:
+        kb_listen.stop()
 
 def release(key):
     try:

@@ -7,22 +7,20 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from DB import DB
+import DB
+# import KM
 import pyperclip
 
 class Ui_MainWindow(object):
-
-    db = DB()
 
     def set_data_table(self):
         header = self.dataTable.horizontalHeader()
         header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
         header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
         header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
-        data = Ui_MainWindow.db.select_all()
         self.dataTable.cellClicked.connect(self.row_copy)
-        print(data)
-        for rowi, row in enumerate(data):
+        print(DB.data)
+        for rowi, row in enumerate(DB.data):
                 self.dataTable.insertRow(rowi)
                 for coli, col in enumerate(row):
                         self.dataTable.setItem(rowi, coli, QtWidgets.QTableWidgetItem(str(col)))
