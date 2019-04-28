@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from DB import DB
+import pyperclip
 
 class Ui_MainWindow(object):
 
@@ -19,11 +20,17 @@ class Ui_MainWindow(object):
         header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
         header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
         data = Ui_MainWindow.db.select_all()
+        self.dataTable.cellClicked.connect(self.row_copy)
         print(data)
         for rowi, row in enumerate(data):
                 self.dataTable.insertRow(rowi)
                 for coli, col in enumerate(row):
                         self.dataTable.setItem(rowi, coli, QtWidgets.QTableWidgetItem(str(col)))
+
+    def row_copy(self, row, col):
+        #Get the clip content from the corresponding cell into clipboard
+        pyperclip.copy(self.dataTable.item(row, 1).text())
+
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
