@@ -1,12 +1,11 @@
 import sqlite3
 from datetime import datetime
 
-db_file = 'database.db'
-
-conn = sqlite3.connect(db_file)
-cursor = conn.cursor()
-cursor.execute('CREATE TABLE IF NOT EXISTS Clips (id INTEGER PRIMARY KEY, content TEXT, clipStamp TEXT)')
-
+with sqlite3.connect('database.db', check_same_thread=False) as conn:
+    cursor = conn.cursor()
+    cursor.execute('CREATE TABLE IF NOT EXISTS Clips (id INTEGER PRIMARY KEY, content TEXT, clipStamp TEXT)')
+    # cursor.execute('DELETE FROM Clips')
+    conn.commit()
 
 def select_all():
     return cursor.execute("SELECT * FROM Clips").fetchall()
@@ -15,12 +14,13 @@ def select_all():
 data = select_all()
 
 def insert_clip(content):
-    try:
-        cursor.execute("INSERT INTO CLIPS (content, clipStamp) VALUES(?,?)", (content, datetime.today().strftime('%Y-%m-%d %H:%M:%S')))
-        conn.commit()
-        data.add(content)
-    except sqlite3.Error as e:
-        print(e.__cause__)
+    if content != '':
+        try:
+            cursor.execute("INSERT INTO CLIPS (content, clipStamp) VALUES(?,?)", (content, datetime.today().strftime('%Y-%m-%d %H:%M:%S')))
+            conn.commit()
+            data.append(content)
+        except sqlite3.Error as e:
+            print(e)
 
 def insert_dummy():
     cursor.execute("INSERT INTO Clips (content, clipStamp) VALUES(?, ?)",("Hi this test", "2013-03-06 10:10:10"))
@@ -31,7 +31,7 @@ def search(text):
     try:
         return cursor.execute("SELECT * FROM Clips WHERE content LIKE ?",('%'+text+'%',)).fetchall()
     except sqlite3.Error as e:
-        print(e.__cause__)
+        print(e)
 
 def print_cursor():
     #Using the ? palceholder to avoid SQL injection

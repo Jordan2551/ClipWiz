@@ -7,9 +7,10 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import DB
-# import KM
+from PyQt5.Qt import QApplication, QClipboard
+from KM import KM
 import pyperclip
+import DB
 
 class Ui_MainWindow(object):
 
@@ -232,7 +233,6 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -262,5 +262,7 @@ if __name__ == "__main__":
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
+    #Call keyboard manager
+    km = KM()
     sys.exit(app.exec_())
 
