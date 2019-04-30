@@ -30,21 +30,18 @@ class KM(threading.Thread):
 
     def press(self, key):
         if self.check_kb(key, self.SCROLL):
-            print('Scroll keybind!')
             #Only scroll through bounds of data
-            print(len(self.master.getData()))
             if self.scroll_counter < len(self.master.getData()):
                 index = len(self.master.getData()) - 1 - self.scroll_counter
+                dat = self.master.getData()
                 # Clip content is index 1 of tuple
                 clip = self.master.getData()[index][1]
                 self.master.copy(clip)
                 self.scroll_counter += 1
         elif self.check_kb(key, self.COPY):
-            print('Copy keybind!')
             #Sleep timer so we can grab the text after os inserted into clipboard
             time.sleep(0.1)
             self.master.insert_clip((QApplication.clipboard().text()))
-            print(self.master.getData()[len(self.master.getData()) - 1])
 
     def check_kb(self, key, kb):
         #Only add initial key in buffer if it exists in a possible combo!

@@ -1,16 +1,13 @@
 import DB, pyperclip
 from KM import KM
-from gui import GUI
-import sys
-
-from PyQt5 import QtCore, QtGui, QtWidgets
+from GUI import Ui_MainWindow
 
 class Master:
     def __init__(self):
         #Call keyboard manager
         self.km = KM(self)
         #Call GUI & set it up
-        self.gui = GUI(self)
+        self.gui = Ui_MainWindow(self)
         self.gui.setup()
 
     def copy(self, content):
@@ -26,6 +23,9 @@ class Master:
 
     def search(self, text):
         return DB.search(text)
+
+    def reset(self):
+        DB.reset()
 
 
 m = Master()

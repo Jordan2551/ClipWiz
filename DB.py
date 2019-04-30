@@ -4,7 +4,6 @@ from datetime import datetime
 with sqlite3.connect('database.db', check_same_thread=False) as conn:
     cursor = conn.cursor()
     cursor.execute('CREATE TABLE IF NOT EXISTS Clips (id INTEGER PRIMARY KEY, content TEXT, clipStamp TEXT)')
-    # cursor.execute('DELETE FROM Clips')
     conn.commit()
 
 def select_all():
@@ -13,14 +12,16 @@ def select_all():
 #Initialize data list with all content
 data = select_all()
 
+
 def insert_clip(content):
     if content != '':
         try:
             cursor.execute("INSERT INTO CLIPS (content, clipStamp) VALUES(?,?)", (content, datetime.today().strftime('%Y-%m-%d %H:%M:%S')))
             conn.commit()
-            inserted = cursor.execute("SELECT * FROM Clips ORDER BY ID DESC LIMIT 1").fetchall()
+            inserted = cursor.execute("SELECT * FROM Clips ORDER BY ID DESC LIMIT 1").fetchone()
+            print(type(inserted))
             data.append(inserted)
-            return inserted
+            return [inserted] #Must return as list of tuples!
         except sqlite3.Error as e:
             print(e)
             return False
@@ -31,8 +32,10 @@ def search(text):
     except sqlite3.Error as e:
         print(e)
 
-def print_cursor():
-    #Using the ? palceholder to avoid SQL injection
-    cursor.execute("SELECT * FROM Clips WHERE content=?",("Hi this test3",))
-    all_rows = cursor.fetchall()
-
+def reset():
+    try:
+        cursor.execute('DELETE FROM Clips')
+        conn.commit()
+        data = select_all() #SCOPING ISSUE!
+    except sqlite3.Error as e:
+        print(e)
