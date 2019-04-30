@@ -7,12 +7,22 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.Qt import QApplication, QClipboard
-from KM import KM
-import pyperclip
-import DB
+import sys
 
-class Ui_MainWindow(object):
+class GUI(object):
+
+    def __init__(self, master):
+        self.master = master
+
+    def setup(self):
+        app = QtWidgets.QApplication(sys.argv)
+        MainWindow = QtWidgets.QMainWindow()
+        self.setupUi(MainWindow)
+        MainWindow.show()
+        sys.exit(app.exec_())
+
+    def greet(self):
+        print("hello")
 
     def set_data_table(self):
         header = self.dataTable.horizontalHeader()
@@ -20,16 +30,24 @@ class Ui_MainWindow(object):
         header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
         header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
         self.dataTable.cellClicked.connect(self.row_copy)
-        print(DB.data)
-        for rowi, row in enumerate(DB.data):
+        self.ins_data_in_table(self.master.getData())
+
+    #Get the clip content from the corresponding cell into clipboard
+    def row_copy(self, row):
+        self.master.copy(self.dataTable.item(row, 1).text())
+
+    #Inserts data into table from a list.
+    #resetdata - true if the entire table should be wiped (used for setup and search functionality) false used by new clipboard inserts
+    def ins_data_in_table(self, data, resetData=True):
+        if resetData:
+                self.dataTable.setRowCount(0)
+        for rowi, row in enumerate(data):
+                #When just inserting a new clip we want to insert at LAST index in table!
+                if resetData == False:
+                        rowi = self.dataTable.rowCount()
                 self.dataTable.insertRow(rowi)
                 for coli, col in enumerate(row):
                         self.dataTable.setItem(rowi, coli, QtWidgets.QTableWidgetItem(str(col)))
-
-    def row_copy(self, row, col):
-        #Get the clip content from the corresponding cell into clipboard
-        pyperclip.copy(self.dataTable.item(row, 1).text())
-
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -254,15 +272,4 @@ class Ui_MainWindow(object):
         item = self.dataTable.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Timestamp    "))
 
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    #Call keyboard manager
-    km = KM()
-    sys.exit(app.exec_())
 

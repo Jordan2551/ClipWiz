@@ -1,13 +1,12 @@
 from pynput import keyboard
 from PyQt5.Qt import QApplication
-import DB
-import pyperclip
 import threading
+import time
 
 class KM(threading.Thread):
-    def __init__(self):
+    def __init__(self, master):
         threading.Thread.__init__(self)
-
+        self.master = master
         #Covers keybind for scrolling through clipboard history
         self.SCROLL =[
                 {keyboard.Key.ctrl_l, keyboard.Key.alt_l, keyboard.KeyCode(char='c')},
@@ -24,28 +23,28 @@ class KM(threading.Thread):
         self.start()
 
     def run(self):
-        self.scroll_counter = 1
+        self.scroll_counter = 0
         # with clause for keyboard listener to be freed after shutdown
         with keyboard.Listener(on_press=self.press, on_release=self.release) as kb_listen:
             kb_listen.join()
 
     def press(self, key):
-        print(key)
-        QApplication.clipboard().setText("Hello")
         if self.check_kb(key, self.SCROLL):
             print('Scroll keybind!')
             #Only scroll through bounds of data
-            print(len(DB.data))
-            if self.scroll_counter < len(DB.data):
-                index = len(DB.data) - 1 - self.scroll_counter
+            print(len(self.master.getData()))
+            if self.scroll_counter < len(self.master.getData()):
+                index = len(self.master.getData()) - 1 - self.scroll_counter
                 # Clip content is index 1 of tuple
-                clip = DB.data[index][1]
-                pyperclip.copy(clip)
+                clip = self.master.getData()[index][1]
+                self.master.copy(clip)
                 self.scroll_counter += 1
-
         elif self.check_kb(key, self.COPY):
             print('Copy keybind!')
-            DB.insert_clip(QApplication.clipboard().text())
+            #Sleep timer so we can grab the text after os inserted into clipboard
+            time.sleep(0.1)
+            self.master.insert_clip((QApplication.clipboard().text()))
+            print(self.master.getData()[len(self.master.getData()) - 1])
 
     def check_kb(self, key, kb):
         #Only add initial key in buffer if it exists in a possible combo!
@@ -62,7 +61,7 @@ class KM(threading.Thread):
             #Only reset the scroll counter when the key buffer is empty!
             #Otherwise it will reset after a single key is released
             if len(self.key_buffer) == 0:
-                self.scroll_counter = 1
+                self.scroll_counter = 0
         except KeyError:
             pass
 

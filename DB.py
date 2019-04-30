@@ -18,14 +18,12 @@ def insert_clip(content):
         try:
             cursor.execute("INSERT INTO CLIPS (content, clipStamp) VALUES(?,?)", (content, datetime.today().strftime('%Y-%m-%d %H:%M:%S')))
             conn.commit()
-            data.append(content)
+            inserted = cursor.execute("SELECT * FROM Clips ORDER BY ID DESC LIMIT 1").fetchall()
+            data.append(inserted)
+            return inserted
         except sqlite3.Error as e:
             print(e)
-
-def insert_dummy():
-    cursor.execute("INSERT INTO Clips (content, clipStamp) VALUES(?, ?)",("Hi this test", "2013-03-06 10:10:10"))
-    cursor.execute("INSERT INTO Clips (content, clipStamp) VALUES(?, ?)",("Hi this test3", "2018-03-06 10:10:10"))
-    conn.commit()
+            return False
 
 def search(text):
     try:
