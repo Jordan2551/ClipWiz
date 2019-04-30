@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="rsc">
+    <file>rsc/Air_rune_detail.png</file>
+    <file>rsc/Earth_rune_detail.png</file>
+    <file>rsc/heart.png</file>
+    <file>rsc/Law_rune_detail.png</file>
+    <file>rsc/python.png</file>
+    <file>rsc/wizard.png</file>
+  </qresource>
+</RCC>
