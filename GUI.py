@@ -19,7 +19,7 @@ class Ui_MainWindow(object):
         MainWindow = QtWidgets.QMainWindow()
         self.setupUi(MainWindow)
         MainWindow.show()
-        sys.exit(app.exec_())
+        app.exec_()
 
     def set_data_table(self):
         header = self.dataTable.horizontalHeader()

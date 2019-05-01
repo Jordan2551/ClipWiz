@@ -29,8 +29,11 @@ class KM(threading.Thread):
     def run(self):
         self.scroll_counter = 0
         # with clause for keyboard listener to be freed after shutdown
-        with keyboard.Listener(on_press=self.press, on_release=self.release) as kb_listen:
-            kb_listen.join()
+        with keyboard.Listener(on_press=self.press, on_release=self.release) as self.kb_listen:
+            self.kb_listen.join()
+
+    def stop(self):
+        self.kb_listen.stop()
 
     def press(self, key):
         if self.check_kb(key, self.SCROLL):

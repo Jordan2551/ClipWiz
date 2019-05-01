@@ -4,15 +4,17 @@ from KM import KM
 from GUI import Ui_MainWindow
 import sys
 
-class Master:
+class ClipWiz:
     def __init__(self):
         #Set up DB
         self.db = DB()
         #Call keyboard manager
-        self.km = KM(self)
+        self.km = KM (self)
         #Call GUI & set it up
         self.gui = Ui_MainWindow(self)
         self.gui.setup()
+        self.km.stop()
+        sys.exit()
 
     def copy(self, content):
         pyperclip.copy(content)
@@ -32,4 +34,4 @@ class Master:
         self.db.reset()
 
 
-m = Master()
+m = ClipWiz()
