@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="rsc">
+    <file>rsc/background.png</file>
     <file>rsc/Air_rune_detail.png</file>
     <file>rsc/Earth_rune_detail.png</file>
     <file>rsc/heart.png</file>

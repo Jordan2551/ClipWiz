@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'gui.ui'
-#
-# Created by: PyQt5 UI code generator 5.11.3
-#
-# WARNING! All changes made in this file will be lost!
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 
@@ -72,7 +64,7 @@ class Ui_MainWindow(object):
         icon.addPixmap(QtGui.QPixmap(":/rsc/rsc/wizard.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("QWidget#centralwidget{\n"
-"    background-image:url(\'C:/Users/falador/Google Drive/Wallpapers/dark_polygon01.png\');\n"
+"    background-image:url(\'rsc/background.png\');\n"
 "}\n"
 "\n"
 "QLabel{\n"
