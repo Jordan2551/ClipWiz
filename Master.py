@@ -1,9 +1,13 @@
-import DB, pyperclip
+import pyperclip
+from DB import DB
 from KM import KM
 from GUI import Ui_MainWindow
+import sys
 
 class Master:
     def __init__(self):
+        #Set up DB
+        self.db = DB()
         #Call keyboard manager
         self.km = KM(self)
         #Call GUI & set it up
@@ -14,18 +18,18 @@ class Master:
         pyperclip.copy(content)
 
     def getData(self):
-        return DB.data
+        return self.db.data
 
     def insert_clip(self, content):
-        inserted = DB.insert_clip(content)
+        inserted = self.db.insert_clip(content)
         if inserted:
             self.gui.ins_data_in_table(inserted, False)
 
     def search(self, text):
-        return DB.search(text)
+        return self.db.search(text)
 
     def reset(self):
-        DB.reset()
+        self.db.reset()
 
 
 m = Master()

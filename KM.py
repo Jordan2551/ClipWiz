@@ -9,13 +9,17 @@ class KM(threading.Thread):
         self.master = master
         #Covers keybind for scrolling through clipboard history
         self.SCROLL =[
-                {keyboard.Key.ctrl_l, keyboard.Key.alt_l, keyboard.KeyCode(char='c')},
-                {keyboard.Key.ctrl_r, keyboard.Key.alt_r, keyboard.KeyCode(char='c')},
+                {keyboard.Key.ctrl_l, keyboard.Key.shift_l, keyboard.KeyCode(char='z')},
+                {keyboard.Key.ctrl_r, keyboard.Key.shift_r, keyboard.KeyCode(char='z')},
+                {keyboard.Key.cmd_l, keyboard.Key.shift_l, keyboard.KeyCode(char='z')},
+                {keyboard.Key.cmd_r, keyboard.Key.shift_r, keyboard.KeyCode(char='z')},
         ]
         # Covers ctrl + c for windows and cmd + c for mac
         self.COPY = [
             {keyboard.Key.ctrl_l, keyboard.KeyCode(char='c')},
             {keyboard.Key.ctrl_r, keyboard.KeyCode(char='c')},
+            {keyboard.Key.cmd_l, keyboard.KeyCode(char='c')},
+            {keyboard.Key.cmd_r, keyboard.KeyCode(char='c')},
         ]
         #Input buffer
         self.key_buffer = set()

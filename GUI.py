@@ -48,8 +48,10 @@ class Ui_MainWindow(object):
                         self.dataTable.setItem(rowi, coli, QtWidgets.QTableWidgetItem(str(col)))
 
     def reset_db(self):
-        self.master.reset()
-        self.dataTable.setRowCount(0)
+        choice = self.msgBox.exec()
+        if choice == QtWidgets.QMessageBox.Yes:
+            self.master.reset()
+            self.dataTable.setRowCount(0)
 
     def reset_content(self):
         self.searchContent.setText("")
@@ -380,12 +382,12 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "ClipWiz - JC Software"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "ClipWiz Beta - JC Software"))
         self.label.setText(_translate("MainWindow", "Clip Board History"))
         self.searchContent.setPlaceholderText(_translate("MainWindow", "Search for clip.."))
         self.label_2.setText(_translate("MainWindow", "Search"))
         self.resetBtn.setText(_translate("MainWindow", "Reset"))
-        self.label_5.setText(_translate("MainWindow", "• To go through your clipboard history use ctrl + alt + c twice. Press again to go back more"))
+        self.label_5.setText(_translate("MainWindow", "• To go through your clipboard history use ctrl + shift + z twice. Press again to go back more"))
         item = self.dataTable.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "1"))
         item = self.dataTable.verticalHeaderItem(1)
@@ -395,7 +397,7 @@ class Ui_MainWindow(object):
         item = self.dataTable.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Content"))
         item = self.dataTable.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "Timestamp"))
+        item.setText(_translate("MainWindow", " Timestamp "))
         __sortingEnabled = self.dataTable.isSortingEnabled()
         self.dataTable.setSortingEnabled(False)
         item = self.dataTable.item(0, 0)
@@ -420,6 +422,12 @@ class Ui_MainWindow(object):
         self.label_13.setText(_translate("MainWindow", "<a href=\"http://www.jcsoftware.ca\" style=\"color:#0288D1;\">JC Software</a>"))
         self.label_14.setText(_translate("MainWindow", "at"))
         self.resetTblBtn.setText(_translate("MainWindow", "Reset Table"))
+        self.msgBox = QtWidgets.QMessageBox()
+        self.msgBox.setIcon(QtWidgets.QMessageBox.Warning)
+        self.msgBox.setText("Are you sure you wish to reset the table?\nThis will erase the database")
+        self.msgBox.setWindowTitle("Reset Table")
+        self.msgBox.setWindowIcon(QtGui.QIcon((QtGui.QPixmap(":/rsc/rsc/wizard.png"))))
+        self.msgBox.setStandardButtons(QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.Cancel)
 
 import rsc_rc
 
