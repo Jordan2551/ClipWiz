@@ -1,3 +1,4 @@
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 
@@ -55,16 +56,17 @@ class Ui_MainWindow(object):
         else:
             self.ins_data_in_table(self.master.search(self.searchContent.text()))
 
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(830, 770)
         MainWindow.setMinimumSize(QtCore.QSize(830, 770))
         MainWindow.setMaximumSize(QtCore.QSize(830, 770))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/rsc/rsc/wizard.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/imgs/wizard.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("QWidget#centralwidget{\n"
-"    background-image:url(\'rsc/background.png\');\n"
+"    background-image:url(:/imgs/bg.png);\n"
 "}\n"
 "\n"
 "QLabel{\n"
@@ -261,7 +263,7 @@ class Ui_MainWindow(object):
         self.label_9.setFont(font)
         self.label_9.setStyleSheet("")
         self.label_9.setText("")
-        self.label_9.setPixmap(QtGui.QPixmap(":/rsc/rsc/python.png"))
+        self.label_9.setPixmap(QtGui.QPixmap(":/imgs/python.png"))
         self.label_9.setObjectName("label_9")
         self.label_10 = QtWidgets.QLabel(self.centralwidget)
         self.label_10.setGeometry(QtCore.QRect(305, 670, 31, 41))
@@ -273,7 +275,7 @@ class Ui_MainWindow(object):
         self.label_10.setFont(font)
         self.label_10.setStyleSheet("")
         self.label_10.setText("")
-        self.label_10.setPixmap(QtGui.QPixmap(":/rsc/rsc/heart.png"))
+        self.label_10.setPixmap(QtGui.QPixmap(":/imgs/heart.png"))
         self.label_10.setObjectName("label_10")
         self.label_11 = QtWidgets.QLabel(self.centralwidget)
         self.label_11.setGeometry(QtCore.QRect(340, 670, 21, 41))
@@ -326,7 +328,7 @@ class Ui_MainWindow(object):
         self.label_15.setFont(font)
         self.label_15.setStyleSheet("")
         self.label_15.setText("")
-        self.label_15.setPixmap(QtGui.QPixmap(":/rsc/rsc/Law_rune_detail.png"))
+        self.label_15.setPixmap(QtGui.QPixmap(":/imgs/Law_rune_detail.png"))
         self.label_15.setObjectName("label_15")
         self.label_16 = QtWidgets.QLabel(self.centralwidget)
         self.label_16.setGeometry(QtCore.QRect(590, 670, 31, 41))
@@ -338,7 +340,7 @@ class Ui_MainWindow(object):
         self.label_16.setFont(font)
         self.label_16.setStyleSheet("")
         self.label_16.setText("")
-        self.label_16.setPixmap(QtGui.QPixmap(":/rsc/rsc/Earth_rune_detail.png"))
+        self.label_16.setPixmap(QtGui.QPixmap(":/imgs/Earth_rune_detail.png"))
         self.label_16.setObjectName("label_16")
         self.label_17 = QtWidgets.QLabel(self.centralwidget)
         self.label_17.setGeometry(QtCore.QRect(630, 670, 31, 41))
@@ -350,10 +352,10 @@ class Ui_MainWindow(object):
         self.label_17.setFont(font)
         self.label_17.setStyleSheet("")
         self.label_17.setText("")
-        self.label_17.setPixmap(QtGui.QPixmap(":/rsc/rsc/Air_rune_detail.png"))
+        self.label_17.setPixmap(QtGui.QPixmap(":/imgs/Air_rune_detail.png"))
         self.label_17.setObjectName("label_17")
         self.resetTblBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.resetTblBtn.setGeometry(QtCore.QRect(620, 480, 121, 31))
+        self.resetTblBtn.setGeometry(QtCore.QRect(590, 480, 151, 31))
         font = QtGui.QFont()
         font.setPointSize(-1)
         self.resetTblBtn.setFont(font)
@@ -379,17 +381,17 @@ class Ui_MainWindow(object):
         self.searchContent.setPlaceholderText(_translate("MainWindow", "Search for clip.."))
         self.label_2.setText(_translate("MainWindow", "Search"))
         self.resetBtn.setText(_translate("MainWindow", "Reset"))
-        self.label_5.setText(_translate("MainWindow", "• To go through your clipboard history use ctrl + shift + z twice. Press again to go back more"))
+        self.label_5.setText(_translate("MainWindow", "• To go through your clipboard history use ctrl + alt + c twice. Press again to go back more"))
         item = self.dataTable.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "1"))
         item = self.dataTable.verticalHeaderItem(1)
         item.setText(_translate("MainWindow", "2"))
         item = self.dataTable.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "Id"))
+        item.setText(_translate("MainWindow", "Id   "))
         item = self.dataTable.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Content"))
         item = self.dataTable.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", " Timestamp "))
+        item.setText(_translate("MainWindow", "Timestamp    "))
         __sortingEnabled = self.dataTable.isSortingEnabled()
         self.dataTable.setSortingEnabled(False)
         item = self.dataTable.item(0, 0)
@@ -413,7 +415,7 @@ class Ui_MainWindow(object):
         self.label_12.setText(_translate("MainWindow", "by"))
         self.label_13.setText(_translate("MainWindow", "<a href=\"http://www.jcsoftware.ca\" style=\"color:#0288D1;\">JC Software</a>"))
         self.label_14.setText(_translate("MainWindow", "at"))
-        self.resetTblBtn.setText(_translate("MainWindow", "Reset Table"))
+        self.resetTblBtn.setText(_translate("MainWindow", "Reset Database"))
         self.msgBox = QtWidgets.QMessageBox()
         self.msgBox.setIcon(QtWidgets.QMessageBox.Warning)
         self.msgBox.setText("Are you sure you wish to reset the table?\nThis will erase the database")
@@ -422,5 +424,4 @@ class Ui_MainWindow(object):
         self.msgBox.setStandardButtons(QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.Cancel)
 
 import rsc_rc
-
 

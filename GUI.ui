@@ -23,15 +23,15 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>ClipWiz - JC Software</string>
+   <string>ClipWiz Beta - JC Software</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="rsc.qrc">
-    <normaloff>:/rsc/rsc/wizard.png</normaloff>:/rsc/rsc/wizard.png</iconset>
+   <iconset resource="rsc/rsc.qrc">
+    <normaloff>:/imgs/wizard.png</normaloff>:/imgs/wizard.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget#centralwidget{
-	background-image:url('C:/Users/falador/Google Drive/Wallpapers/dark_polygon01.png');
+	background-image:url(:/imgs/bg.png);
 }
 
 QLabel{
@@ -444,7 +444,7 @@ QPushButton{
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="rsc.qrc">:/rsc/rsc/python.png</pixmap>
+     <pixmap resource="rsc/rsc.qrc">:/imgs/python.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="label_10">
@@ -471,7 +471,7 @@ QPushButton{
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="rsc.qrc">:/rsc/rsc/heart.png</pixmap>
+     <pixmap resource="rsc/rsc.qrc">:/imgs/heart.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="label_11">
@@ -597,7 +597,7 @@ QPushButton{
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="rsc.qrc">:/rsc/rsc/Law_rune_detail.png</pixmap>
+     <pixmap resource="rsc/rsc.qrc">:/imgs/Law_rune_detail.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="label_16">
@@ -624,7 +624,7 @@ QPushButton{
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="rsc.qrc">:/rsc/rsc/Earth_rune_detail.png</pixmap>
+     <pixmap resource="rsc/rsc.qrc">:/imgs/Earth_rune_detail.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="label_17">
@@ -651,15 +651,15 @@ QPushButton{
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="rsc.qrc">:/rsc/rsc/Air_rune_detail.png</pixmap>
+     <pixmap resource="rsc/rsc.qrc">:/imgs/Air_rune_detail.png</pixmap>
     </property>
    </widget>
    <widget class="QPushButton" name="resetTblBtn">
     <property name="geometry">
      <rect>
-      <x>620</x>
+      <x>590</x>
       <y>480</y>
-      <width>121</width>
+      <width>151</width>
       <height>31</height>
      </rect>
     </property>
@@ -672,7 +672,7 @@ QPushButton{
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>Reset Table</string>
+     <string>Reset Database</string>
     </property>
    </widget>
   </widget>
@@ -689,7 +689,7 @@ QPushButton{
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="rsc.qrc"/>
+  <include location="rsc/rsc.qrc"/>
  </resources>
  <connections/>
 </ui>
