@@ -66,7 +66,7 @@ class Ui_MainWindow(object):
         icon.addPixmap(QtGui.QPixmap(":/imgs/wizard.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("QWidget#centralwidget{\n"
-"    background-image:url(:/imgs/bg.png);\n"
+"    background-color:#18191a;\n"
 "}\n"
 "\n"
 "QLabel{\n"
@@ -391,7 +391,7 @@ class Ui_MainWindow(object):
         item = self.dataTable.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Content"))
         item = self.dataTable.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "Timestamp    "))
+        item.setText(_translate("MainWindow", "  Timestamp"))
         __sortingEnabled = self.dataTable.isSortingEnabled()
         self.dataTable.setSortingEnabled(False)
         item = self.dataTable.item(0, 0)
